@@ -2,18 +2,20 @@ from arrays import *
 import matplotlib.pyplot as plt
 from scipy import stats
 
-slope, intercept, r, p, std_err = stats.linregress(dates[-30:], dayClose[-30:])
+days = 30
 
 x = []
-for idx, num in enumerate(dates[-30:]):
-  x.append(idx)
+for idx, num in enumerate(dates):
+  x.append(idx + 1)
+
+slope, intercept, r, p, std_err = stats.linregress(x[-days:], percentChange[-days:])
 
 def linear(x):
   return slope * x + intercept
 
-mymodel = list(map(linear, x))
+mymodel = list(map(linear, x[-days:]))
 
-plt.scatter(x, dayClose[-30:])
-plt.plot(x, mymodel)
-plt.savefig("linear_reg.png")
+plt.scatter(x[-days:], percentChange[-days:])
+plt.plot(x[-days:], mymodel)
+plt.savefig("percentChange30.png")
 
