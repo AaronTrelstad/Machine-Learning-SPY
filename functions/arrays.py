@@ -1,6 +1,5 @@
 import csv
 
-
 with open('oneyear.csv') as f:
     reader = csv.reader(f)
     spy = list(reader)
