@@ -9,7 +9,7 @@ for idx, num in enumerate(dates):
   x.append(idx + 1)
 
 ## x is used when comparing to the date
+n = 3
+mymodel = np.poly1d(np.polyfit(dayVolume[-days:], percentChange[-days:], n))
 
-mymodel = np.poly1d(np.polyfit(dayVolume[-days:], dayClose[-days:], 3))
-
-print(r2_score(dayClose[-30:], mymodel(dayVolume[-30:])))
+print(r2_score(percentChange[-days:], mymodel(dayVolume[-days:])))
