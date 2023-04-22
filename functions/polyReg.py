@@ -8,9 +8,9 @@ x = []
 for idx, num in enumerate(dates):
   x.append(idx + 1)
 
-n = 3
-mymodel = np.poly1d(np.polyfit(x[-days:], dayClose[-days:], n))
+n = 10
+mymodel = np.poly1d(np.polyfit(x[-days:], dayVolume[-days:], n))
 
-plt.scatter(x[-days:], dayClose[-days:])
+plt.scatter(x[-days:], dayVolume[-days:])
 plt.plot(x[-days:], mymodel(x[-days:]))
-plt.savefig("poly_regDayClose.png")
+plt.savefig("poly_regDayVolume(10).png")
